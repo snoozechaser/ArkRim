@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- 		Hediffs. 		-->
+
+    <!-- Oripathy (the main illness ArkRim is based on). -->
+    <HediffDef ParentName="ChronicDiseaseBase">
+        <defName>Oripathy</defName>
+        <label>Oripathy</label>
+        <labelNoun>Oripathy</labelNoun>
+        <description>A cluster of originium rocks. Without treatment, the originium will spread over time, causing worsening symptoms and eventually killing the patient.
+        \nA skilled doctor can slow the spread and lessen the impact of Oripathy, but a cure is incredibly rare.</description>
+        <cureAllAtOnceIfCuredByItem>true</cureAllAtOnceIfCuredByItem>
+        <hediffClass>HediffWithComps</hediffClass>
+        <initialSeverity>0.01</initialSeverity>
+        <chanceToCauseNoPain>0</chanceToCauseNoPain>
+        <tendable>true</tendable>
+        <stages>
+            <li>
+                <label>minor</label>
+                <partEfficiencyOffset>-0.05</partEfficiencyOffset>
+                <painOffset>0.05</painOffset>
+            </li>
+            <li>
+                <minSeverity>0.2</minSeverity>
+                <label>minor</label>
+                <partEfficiencyOffset>-0.15</partEfficiencyOffset>
+                <painOffset>0.15</painOffset>
+                <hediffGivers>
+                    <li Class="HediffGiver_Random">
+                        <hediff>Oripathy</hediff>
+                        <mtbDays>360</mtbDays>
+                        <canAffectAnyLivePart>true</canAffectAnyLivePart>
+                    </li>
+                </hediffGivers>
+            </li>
+            <li>
+                <minSeverity>0.4</minSeverity>
+                <label>major</label>
+                <partEfficiencyOffset>-0.3</partEfficiencyOffset>
+                <painOffset>0.3</painOffset>
+                <hediffGivers>
+                    <li Class="HediffGiver_Random">
+                        <hediff>Oripathy</hediff>
+                        <mtbDays>180</mtbDays>
+                        <canAffectAnyLivePart>true</canAffectAnyLivePart>
+                    </li>
+                </hediffGivers>
+            </li>
+            <li>
+                <minSeverity>0.6</minSeverity>
+                <label>major</label>
+                <partEfficiencyOffset>-0.5</partEfficiencyOffset>
+                <painOffset>0.5</painOffset>
+                <hediffGivers>
+                    <li Class="HediffGiver_Random">
+                        <hediff>Oripathy</hediff>
+                        <mtbDays>90</mtbDays>
+                        <canAffectAnyLivePart>true</canAffectAnyLivePart>
+                    </li>
+                </hediffGivers>
+            </li>
+            <li>
+                <minSeverity>0.8</minSeverity>
+                <label>extreme</label>
+                <partEfficiencyOffset>-0.7</partEfficiencyOffset>
+                <painOffset>0.7</painOffset>
+                <hediffGivers>
+                    <li Class="HediffGiver_Random">
+                        <hediff>Oripathy</hediff>
+                        <mtbDays>30</mtbDays>
+                        <canAffectAnyLivePart>true</canAffectAnyLivePart>
+                    </li>
+                </hediffGivers>
+            </li>
+            <li>
+                <minSeverity>1</minSeverity>
+                <label>extreme</label>
+                <partEfficiencyOffset>-0.9</partEfficiencyOffset>
+                <painOffset>0.9</painOffset>
+                <destroyPart>false</destroyPart>
+                <hediffGivers>
+                    <li Class="HediffGiver_Random">
+                        <hediff>Oripathy</hediff>
+                        <mtbDays>10</mtbDays>
+                        <canAffectAnyLivePart>true</canAffectAnyLivePart>
+                    </li>
+                </hediffGivers>
+            </li>
+        </stages>
+        <comps>
+            <li Class="HediffCompProperties_TendDuration">
+                <baseTendDurationHours>168</baseTendDurationHours>
+                <severityPerDayTended>0.001</severityPerDayTended>
+            </li>
+            <li Class="HediffCompProperties_GrowthMode">
+                <severityPerDayGrowing>0.005</severityPerDayGrowing>
+                <severityPerDayRemission>0.000</severityPerDayRemission>
+                <severityPerDayGrowingRandomFactor>0.2~0.8</severityPerDayGrowingRandomFactor>
+                <severityPerDayRemissionRandomFactor>0.0~0.0</severityPerDayRemissionRandomFactor>
+            </li>
+        </comps>
+    </HediffDef>
+    
+    <!-- HediffGiver for the Oripathy we made above. -->
+    <hediffGivers>
+        <li Class="HediffGiver_Oripathy">
+            <hediff>Oripathy</hediff>
+        </li>
+   </hediffGivers>
+</Defs>

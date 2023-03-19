@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 		Things. 		-->
+
+	<!-- Originium Chunks (Haulable rocks). -->
+	<ThingDef ParentName="ChunkRockBase">
+		<defName>ChunkOriginium</defName>
+		<label>Originium Chunk</label>
+		<description>Chunks of raw originium. Unrefined Originium is a dangerous material and mishandling it can cause Oripathy.</description>
+		<graphicData>
+			<texPath>Item/ChunkOriginium</texPath>
+			<!--color>(75, 67, 59)</color-->
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>19</Mass>
+		</statBases>
+		<soundDrop>ChunkRock_Drop</soundDrop>
+		<butcherProducts>
+			<OriginitePrime>1</OriginitePrime>
+		</butcherProducts>
+	</ThingDef>
+
+	<!-- Originite Prime (Base ArkRim resource). -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>OriginitePrime</defName>
+		<label>Originite Prime</label>
+		<description>Pieces of processed Originium. Originite Prime is a hard material used in many things.</description>
+		<graphicData>
+			<texPath>Item/Material/OriginitePrime</texPath>
+			<!--color>(75, 67, 59)</color-->
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>5.0</MarketValue>
+			<Mass>0.70</Mass>
+			<Beauty>1</Beauty>
+			<SharpDamageMultiplier>0.5</SharpDamageMultiplier>
+		</statBases>
+		<category>Item</category> <!-- Not sure why but this isn't showing in stockpiles. -->
+		<selectable>true</selectable>
+		<soundInteract>Metal_Drop</soundInteract>
+    	<soundDrop>Metal_Drop</soundDrop>
+    	<useHitPoints>false</useHitPoints>
+		<stuffProps>
+			<color>(75, 67, 59)</color>
+			<stuffAdjective>originite</stuffAdjective>
+			<statFactors>
+				<MarketValue>0.8</MarketValue>
+				<MaxHitPoints>1.3</MaxHitPoints>
+				<WorkToBuild>4.5</WorkToBuild>
+				<WorkToMake>1</WorkToMake>
+			</statFactors>
+			<constructEffect>ConstructMetal</constructEffect>
+      		<soundImpactStuff>BulletImpact_Metal</soundImpactStuff>
+      		<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      		<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+		</stuffProps>
+		<smeltable>true</smeltable>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+	</ThingDef>
+
+	<!-- 		Recipes. 		-->
+
+	<!-- Originite Prime Recipe.-->
+	<RecipeDef Name="ArkRim_RecipeOriginite">
+    	<defName>ArkRim_MakeOriginitePrime</defName>
+    	<label>Manufacture Originite Prime</label>
+    	<description>Use steel and intense heat to manufacture Originite Prime. Makes 10 pieces.</description>
+    	<jobString>Manufacturing Originite Prime.</jobString>
+    	<workAmount>500</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<targetCountAdjustment>10</targetCountAdjustment>
+		<recipeUsers>
+			<li>ElectricSmelter</li>
+		</recipeUsers>
+    	<ingredients>
+      		<li>
+        		<filter>
+          			<thingDefs>
+            			<li>ChunkOriginium</li>
+          			</thingDefs>
+				</filter>
+        		<count>3</count>
+      		</li>
+      		<li>
+        		<filter>
+          			<thingDefs>
+            			<li>Steel</li>
+          			</thingDefs>
+        		</filter>
+        		<count>10</count>
+      		</li>
+    	</ingredients>
+    	<products>
+      		<OriginitePrime>10</OriginitePrime>
+    	</products>
+    	<fixedIngredientFilter>
+      		<thingDefs>
+        		<li>ChunkOriginium</li>
+				<li>Steel</li>
+      		</thingDefs>
+    	</fixedIngredientFilter>
+  	</RecipeDef>
+	
+</Defs>
